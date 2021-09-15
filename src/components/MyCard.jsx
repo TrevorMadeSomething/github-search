@@ -20,7 +20,9 @@ export default function MyCard({ searchedValue, setNoPerson }) {
 
   useEffect(() => {
     fetch(
-      `http://api.github.com/users/${searchedValue ? searchedValue : "octocat"}`
+      `https://api.github.com/users/${
+        searchedValue ? searchedValue : "octocat"
+      }`
     )
       .then((res) => res.json())
       .then((data) => {
