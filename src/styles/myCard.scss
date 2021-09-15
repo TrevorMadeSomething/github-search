@@ -1,8 +1,212 @@
 @import "global.scss";
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  background: transparent;
+}
+
 .myCard {
-    background-color: $lightMode-offWhite;
-    margin-top: 24px;
-    width: 730px;
-    height: 419px;
+  background-color: $lightMode-offWhite;
+  margin-top: 24px;
+  width: 730px;
+  height: 419px;
+  position: relative;
+  display: flex;
+  padding: 48px;
+  border-radius: 15px;
+
+  -webkit-box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.19);
+  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.19);
+
+  h3 {
+    margin: 0;
+    font-family: $h3_font_family;
+    font-size: $h3_font_size;
+    font-weight: $h3_font_weight;
+    line-height: $h3_line_height;
+    color: $lightMode-skyBlue;
+  }
+
+  p {
+    font-family: $body_font_family;
+    font-size: $body_font_size;
+    font-weight: $body_font_weight;
+    line-height: $body_line_height;
+  }
+
+  .leftColumn {
+    margin-right: 37px;
+    img {
+      width: 117px;
+      height: 117px;
+      border-radius: 50%;
+    }
+  }
+
+  .bigCard {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+
+    .topThird {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      margin-bottom: 32px;
+
+      p {
+        color: $lightMode-greyBlue;
+      }
+      .nameAndBio {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        .name {
+          font-family: $h1_font_family;
+          font-size: $h1_font_size;
+          font-weight: $h1_font_weight;
+          line-height: $h1_line_height;
+        }
+
+        p {
+          filter: opacity(0.75);
+        }
+        h3 {
+          margin: 0 0 20px 0;
+        }
+      }
+    }
+    .middleThird {
+      background-color: $lightMode-lightWhiteGrey;
+      width: 100%;
+      height: 85px;
+      padding: 15px 83px 17px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      border-radius: 10px;
+      margin-bottom: 37px;
+
+      .infoBox {
+        height: 53px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        text-align: left;
+
+        h3 {
+          margin: 0;
+          color: $lightMode-greyBlue;
+        }
+
+        h2 {
+          margin: 0;
+          font-family: $h2_font_family;
+          font-size: $h2_font_size;
+          font-weight: $h2_font_weight;
+          line-height: $h2_line_height;
+        }
+      }
+    }
+
+    .bottomThird {
+      width: 100%;
+      height: 63px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: row;
+
+      h3 {
+        color: $lightMode-greyBlue;
+      }
+      .iconInfo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        margin-bottom: 10px;
+      }
+      .locationAndBlog {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-right: 55px;
+
+        .greyOut {
+          color: $lightMode-lightGrey;
+          filter: grayscale(0.25);
+          filter: opacity(0.5);
+        }
+
+        img {
+          margin-right: 16px;
+        }
+
+        a {
+          font-family: $h3_font_family;
+          font-size: $h3_font_size;
+          font-weight: $h3_font_weight;
+          line-height: $h3_line_height;
+          color: $lightMode-lightGrey;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+
+        .locationIcon {
+          margin-right: 20px;
+        }
+      }
+
+      .twitterAndCompany {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+
+        a {
+          font-family: $h3_font_family;
+          font-size: $h3_font_size;
+          font-weight: $h3_font_weight;
+          line-height: $h3_line_height;
+          color: $lightMode-lightGrey;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+
+        .greyOut {
+          color: $lightMode-lightGrey;
+          filter: grayscale(0.25);
+          filter: opacity(0.5);
+        }
+
+        img {
+          margin-right: 16px;
+        }
+      }
+    }
+  }
 }

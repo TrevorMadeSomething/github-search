@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import dateFormat from "dateformat";
 
-export default function MyCard() {
+export default function MyCard({ searchedValue, setNoPerson }) {
   const [avatar, setAvatar] = useState();
   const [name, setName] = useState();
   const [login, setLogin] = useState();
@@ -19,12 +19,21 @@ export default function MyCard() {
   const [company, setCompany] = useState();
 
   useEffect(() => {
-    fetch("http://api.github.com/users/octocat")
+    fetch(
+      `http://api.github.com/users/${searchedValue ? searchedValue : "octocat"}`
+    )
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
+        if (data.login) {
+          setData(data);
+          setNoPerson(false);
+        } else {
+          // eslint-disable-next-line
+          setNoPerson(true);
+        }
       });
-  }, []);
+    // eslint-disable-next-line
+  }, [searchedValue]);
 
   const setData = ({
     avatar_url,
@@ -62,11 +71,11 @@ export default function MyCard() {
       <div className="bigCard">
         <div className="topThird">
           <div className="nameAndBio">
-            <div className="name">{name}</div>
-            <div className="login">{login}</div>
-            <div className="bio">{bio}</div>
+            <div className="name">{name || login}</div>
+            <h3 className="login">{`@${login}`}</h3>
+            <p className="bio">{bio || "This profile has no bio"}</p>
           </div>
-          <div className="dateJoined">Joined {dateJoined}</div>
+          <p className="dateJoined">Joined {dateJoined}</p>
         </div>
         <div className="middleThird">
           <div className="infoBox">
@@ -82,25 +91,65 @@ export default function MyCard() {
             <h2>{following}</h2>
           </div>
         </div>
-        <div className="lowerThird">
-          <div className="locationAndTwitter">
-            <div className="location">
-              <img src="assets/icon-location.svg" alt="icon-location" />
-              <h3>{location}</h3>
+        <div className="bottomThird">
+          <div className="locationAndBlog">
+            <div className="location iconInfo">
+              <img
+                src="assets/icon-location.svg"
+                alt="icon-location"
+                className={location ? "locationIcon" : "locationIcon greyOut"}
+              />
+              <h3 className={location ? "" : "greyOut"}>
+                {location || "Not Available"}
+              </h3>
             </div>
-            <div className="Twitter">
-              <img src="assets/icon-twitter.svg" alt="icon-twitter" />
-              <h3>{twitterUserName || "Not Avaliable"}</h3>
+            <div className="blog iconInfo">
+              <img
+                src="assets/icon-website.svg"
+                alt="icon-blog"
+                className={blog ? "" : "greyOut"}
+              />
+
+              <a className={blog ? "" : "greyOut"} href={blog ? blog : "#"}>
+                {blog || "Not Available"}
+              </a>
             </div>
           </div>
-          <div className="blogAndCompany">
-            <div className="blog">
-              <img src="assets/icon-website.svg" alt="icon-blog" />
-              <h3>{blog}</h3>
+          <div className="twitterAndCompany">
+            <div className="twitter iconInfo">
+              <img
+                src="assets/icon-twitter.svg"
+                alt="icon-twitter"
+                className={twitterUserName ? "" : "greyOut"}
+              />
+
+              <a
+                className={twitterUserName ? "" : "greyOut"}
+                href={
+                  twitterUserName
+                    ? `https://twitter.com/${twitterUserName}`
+                    : "#"
+                }
+              >
+                {twitterUserName || "Not Available"}
+              </a>
             </div>
-            <div className="company">
-              <img src="assets/icon-company.svg" alt="icon-company" />
-              <h3>{company}</h3>
+
+            <div className="company iconInfo">
+              <img
+                src="assets/icon-company.svg"
+                alt="icon-company"
+                className={company ? "" : "greyOut"}
+              />
+
+              <a
+                href={
+                  company ? `https://github.com/${company.substring(1)}` : "#"
+                }
+                className={company ? "" : "greyOut"}
+              >
+                {company || "Not Available"}
+              </a>
             </div>
           </div>
         </div>
