@@ -1,0 +1,72 @@
+@import "global.scss";
+
+.search {
+    width: 730px;
+    height: 69px;
+
+    margin-top: 36px;
+    padding: 10px;
+
+    background-color: $lightMode-offWhite;
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+
+    .left {
+        img {
+            height: 24px;
+            width: 24px;
+
+            position: absolute;
+            top: 23px;
+        }
+
+        input {
+            width: 350px;
+            height: 25px;
+            color: $lightMode-greyBlue;
+            position: absolute;
+            left: 80px;
+            bottom: 22px;
+
+            border: none;
+            font-family: $h3_font_family;
+            font-size: 18px;
+            font-weight: $h3_font_weight;
+            line-height: $h3_line_height;
+        }
+        ::placeholder {
+            color: $lightMode-greyBlue;
+            opacity: 1; /* Firefox */
+        }
+
+        :-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: $lightMode-greyBlue;
+        }
+
+        ::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: $lightMode-greyBlue;
+        }
+    }
+
+    button {
+        width: 106px;
+        height: 50px;
+
+        color: white;
+        border: none;
+        border-radius: 10px;
+        background-color: $lightMode-skyBlue;
+
+        font-family: $h3_font_family;
+        font-size: $h3_font_size;
+        font-weight: $h3_font_weight;
+        line-height: $h3_line_height;
+    }
+}
